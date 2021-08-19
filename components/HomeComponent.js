@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, View, StyleSheet, Modal, Form } from 'react-native';
-import { Icon, Text } from 'react-native-elements';
+import { Icon, Text, Header, Slider } from 'react-native-elements';
+import Entry from './EntryComponent';
 
 
 class Home extends Component {
@@ -24,7 +25,6 @@ class Home extends Component {
             bounces
             style={styles.ScrollView}
             >
-
                 <View>
                     <Text 
                     h1
@@ -55,14 +55,33 @@ class Home extends Component {
                         reverse
                         onPress={() => this.toggleModal()}        
                     />
-                    <Modal
+                    <View>
+                        <Modal
+                        
                         animationType={'slide'}
                         transparent={false}
                         visible={this.state.showModal}
                         onRequestClose={() => this.toggleModal()}
-                    >
-                        <Text>Entry: </Text>
-                    </Modal>
+                        >
+                        <Text 
+                        h1
+                        justifyContent
+                        style={styles.Header}
+                        >Mood Rating</Text>
+                        <Text 
+                        h3
+                        justifyContent
+                        style={styles.Header}
+                        >1-100</Text>
+
+                        <Slider style={styles.Test}
+                            maximumValue='100'
+                            minimumValue='0'
+                            allowTouchTrack
+                            thumbTintColor='#7d9a8f'
+                        ></Slider>
+                        </Modal>
+                    </View>
                 </View>
             </ScrollView>
         );
@@ -71,17 +90,17 @@ class Home extends Component {
 
 const styles = StyleSheet.create({
     Test: {
-
+        marginTop: 450
     },
     View: {
     flexDirection: 'row',
     paddingTop: 450,
     },
     Icon: {
-    
+    overlayColor: 'black'
     },
     Header: {
-    color: '#7d9a8f',
+    color: '#597369',
     alignSelf: 'center',
     fontFamily: 'Times New Roman',
     marginTop: 125,
@@ -89,6 +108,9 @@ const styles = StyleSheet.create({
     },
     ScrollView: {
     backgroundColor: '#e5f1df',
+    },
+    Modal: {
+    backgroundColor: '#e5f1df'
     }
 });
 
